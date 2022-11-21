@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package="server/proto";
+package proto;
+
+message Req{
+  int64  x=1;
+  int64  y=2;
+  Op op = 3;
+}
+
+message Res{
+  int64 res=1;
+}
+
+enum Op{
+  _=0;
+  ADD=1;
+  SUB=2;
+}
+
+// 定义服务
+service cal{
+  rpc Do(Req) returns(Res) {}
+}
+
+
+
