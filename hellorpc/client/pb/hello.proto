@@ -1,0 +1,32 @@
+syntax="proto3";
+
+// 项目路径
+option go_package= "client/pb";
+
+package pb;
+
+message Req{
+  string name=1;
+}
+
+message Res{
+  string reply=1;
+}
+
+service hello{
+  rpc SayHello (Req) returns (Res){}
+
+  //服务端流式rpc  流式数据
+  rpc ServerStreamHello (Req) returns(stream Res){}
+
+  // 客户端流式rpc
+  rpc ClientStreamHello(stream Req) returns(Res){}
+
+  // 双向rpc
+  rpc BudiStreamHello(stream Req) returns(stream Res){}
+
+}
+
+
+
+
